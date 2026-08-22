@@ -8,7 +8,7 @@ const express = require('express')
 
 
 const  authRoutes = require('./src/routes/auth')
-
+const connectDB = require('./src/db/config')
 const app = express()
 
 
@@ -21,5 +21,7 @@ require('dotenv').config()
 app.listen(process.env.PORT,()=>{
 
     console.log("server is running")
+    connectDB()
+
 
 })
