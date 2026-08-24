@@ -14,7 +14,7 @@ const signUpControllers = async (req, res) => {
 
 
 
-        const { fullName, email, password }
+        const { email, fullName, password } = req.body
 
 
 
@@ -23,7 +23,7 @@ const signUpControllers = async (req, res) => {
                 message: "All filesd required"
             })
         }
-        if (password.lenght < 6) {
+        if (password.length < 6) {
             return res.status(400).json({
                 message: "Password must be at least 6 characters"
             })
@@ -42,7 +42,7 @@ const signUpControllers = async (req, res) => {
         const hashPassword = await bcrypt.hash(password, salt)
 
 
-        const newUser = await userModel({
+        const newUser = new userModel({
             fullName,
             email,
             password: hashPassword
@@ -75,8 +75,10 @@ const signUpControllers = async (req, res) => {
 
     catch (error) {
         console.log(error.message)
+        res.status(500).json({
+            message: "Internal server error"
+        })
     }
-
 
 
 
