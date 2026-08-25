@@ -5,15 +5,12 @@ const userModel = require('../models/user')
 const jwt = require("jsonwebtoken")
 
 
-
-
-
 const protectRoute = async (req, res, next) => {
     try {
 
 
 
-        const token = res.cookie.token
+        const token = req.cookie.token
 
 
         if (!token) {
@@ -36,7 +33,7 @@ const protectRoute = async (req, res, next) => {
 
 
 
-        const user = await userModel.findById(decoded.usreId).select("-password")
+        const user = await userModel.findById(decoded.userId).select("-password")
 
 
         if (!user) {
@@ -54,3 +51,6 @@ const protectRoute = async (req, res, next) => {
         console.log(error.message)
     }
 }
+
+
+module.exports = protectRoute

@@ -6,6 +6,7 @@ const express = require('express')
 
 const authRoutes = require('./src/routes/auth')
 const connectDB = require('./src/db/config')
+const multer = require("multer")
 
 
 const cookieParser = require('cookie-parser')
@@ -17,6 +18,7 @@ app.use(express.json())
 app.use('/api/auth', authRoutes);
 app.use(cookieParser());
 require('dotenv').config();
+
 
 app.listen(process.env.PORT, () => {
 
