@@ -19,3 +19,6 @@ router.get('/:id',protectRoute,getMessages)
 
 
 router.post('/send/:id',protectRoute,sendMessages)
+
+
+module.exports = router;
