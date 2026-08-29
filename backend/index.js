@@ -5,6 +5,7 @@ const express = require('express')
 
 
 const authRoutes = require('./src/routes/auth')
+const messageRoutes =require('./src/routes/message')
 const connectDB = require('./src/db/config')
 const multer = require("multer")
 
@@ -16,6 +17,8 @@ app.use(express.json())
 
 
 app.use('/api/auth', authRoutes);
+app.use('/api/message', messageRoutes);
+app.use("/uploads", express.static("uploads"));
 app.use(cookieParser());
 require('dotenv').config();
 

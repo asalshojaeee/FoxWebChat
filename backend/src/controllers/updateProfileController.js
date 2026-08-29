@@ -5,8 +5,7 @@ const updateProfile = async (req, res) => {
 
     try {
 
-        const userId = req.userId
-
+        const userId = req.user._id
         const profilePic = req.file
 
         const updatedUser = await userModel.findByIdAndUpdate(
