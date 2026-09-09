@@ -8,7 +8,7 @@ import Setting from './pages/Setting'
 import Profile from './pages/Profile'
 import { useAuthStore } from './store/useAuthStore'
 
-
+import { Toaster } from "react-hot-toast";
 import { Loader } from 'lucide-react'
 const App = () => {
 
@@ -22,16 +22,16 @@ const App = () => {
 
 
 
-  if (isCheckinAuth && !authUser) {
+  // if (isCheckinAuth && !authUser) {
 
 
-    return (
-      <div className='flex items-center justify-center h-screen'>
-        <Loader className='size-10 animate-spin' />
+  //   return (
+  //     <div className='flex items-center justify-center h-screen'>
+  //       <Loader className='size-10 animate-spin' />
 
-      </div>
-    )
-  }
+  //     </div>
+  //   )
+  // }
   return (
 
 
@@ -52,6 +52,11 @@ const App = () => {
 
 
       </Routes>
+
+
+
+
+      <Toaster />
     </div>
 
 
