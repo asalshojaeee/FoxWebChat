@@ -16,13 +16,13 @@ const app = express()
 app.use(express.json())
 app.use(cors({
     origin: "http://localhost:5173",
-    Credential: true
+    credentials: true
 }))
+app.use(cookieParser());
 
 app.use('/api/auth', authRoutes);
 app.use('/api/message', messageRoutes);
 app.use("/uploads", express.static("uploads"));
-app.use(cookieParser());
 require('dotenv').config();
 
 

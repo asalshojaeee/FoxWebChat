@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Frontend - Chrome",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}/frontend/src",
+            "sourceMaps": true,
+            "runtimeArgs": ["--disable-dev-shm-usage"],
+                "runtimeExecutable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+
+        },
+        {
+            "name": "Backend - Node.js",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/index.js",
+            "skipFiles": [
+                "<node_internals>/**"
+            ]
+        }
+    ]
+}
