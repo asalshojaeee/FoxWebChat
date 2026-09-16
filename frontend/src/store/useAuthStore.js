@@ -86,18 +86,60 @@ export const useAuthStore = create((set) => ({
 
 
     login: async (data) => {
-        set({ isLoginigIn: true });
+        set({ isLoginigIn: true })
         try {
-            const res = await axiosInstance.post("/auth/login", data);
+            const res = await axiosInstance.post("/auth/login", data)
             set({ authUser: res.data });
-            toast.success("Logged in successfully");
+            toast.success("Logged in successfully")
 
-            get().connectSocket();
+            get().connectSocket()
         } catch (error) {
-            toast.error(error.response.data.message);
+            toast.error(error.response.data.message)
         } finally {
-            set({ isLoginigIn: false });
+            set({ isLoginigIn: false })
+        }
+    },
+
+
+    updateProfile: async (file) => {
+
+        const formData = new FormData()
+
+        formData.append("profilePic", file)
+
+        set({ isUpdatingProfile: true })
+
+        try {
+
+            const res = await axiosInstance.put(
+                "/auth/profile",
+                formData
+            )
+
+            set({
+                authUser: res.data
+            })
+
+            toast.success("Profile updated successfully")
+
+        } catch (error) {
+
+            console.log(
+                "error in update profile:",
+                error.response?.data || error
+            )
+
+            toast.error(
+                error.response?.data?.message ||
+                "Profile update failed"
+            )
+
+        } finally {
+
+            set({
+                isUpdatingProfile: false
+            })
+
         }
     }
-
 }))

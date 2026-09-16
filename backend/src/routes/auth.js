@@ -32,7 +32,7 @@ router.post("/signup", signUpControllers)
 router.post("/login", loginControllers)
 router.post("/logout", logOutControllers)
 
-router.post(
+router.put(
     "/profile",
     protectRoute,
     upload.single("profilePic"),
