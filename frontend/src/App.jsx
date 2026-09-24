@@ -10,8 +10,11 @@ import { useAuthStore } from './store/useAuthStore'
 
 import { Toaster } from "react-hot-toast";
 import { Loader } from 'lucide-react'
-const App = () => {
 
+
+import { useThemeStore } from './store/useThemeStore'
+const App = () => {
+const {theme}=useThemeStore()
   const { authUser, checkAuth, isCheckinAuth } = useAuthStore()
 
 
@@ -35,7 +38,7 @@ const App = () => {
   return (
 
 
-    <div>
+    <div data-theme={theme}>
 
       <Navbar />
 
